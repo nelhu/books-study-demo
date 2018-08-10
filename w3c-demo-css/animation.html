@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animation</title>
+    <style  type="text/css" rel="stylesheet">
+        .space-border {
+            border: 1px solid red;
+            padding: 15px;
+        }
+
+        .animation-one {
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            position: relative;
+            animation-name: move;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-delay: 2s;
+            animation-iteration-count: 2;
+            animation-direction: alternate;
+            animation-play-state: running;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes move {
+            0% {
+                top: 0px;
+            }
+            25% {
+                top: 100px
+            }
+            50% {
+                top: 200px;
+            }
+            75% {
+                top: 100px;
+            }
+            100% {
+                top: 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="space-border">
+    <h3>animate</h3>
+    <div class="animation-one">
+
+    </div>
+</div>
+
+
+</body>
+</html>
