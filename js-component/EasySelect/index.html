@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <title>EasySelect Demo</title>
+    <link type="text/css" rel="stylesheet" href="EasySelect.css"/>
+    <script type="text/javascript" src="EasySelect.js"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="fixWidth">
+            <div class="label">
+                <h3>EasySelect Demo</h3>
+            </div>
+            <div class="demo">
+                <div id="ezselect">点一下</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="EasySelect">
+        <div class="greyLayer"></div>
+        <div class="content">
+            <div class="btnBar">
+                <div class="fixWidth">
+                    <div class="cancel">取消</div>
+                    <div class="title">标题</div>
+                    <div class="ensure">确定</div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="fixWidth">老婆
+                    <div class="wheels"></div>
+                    <div class="selectLine"></div>
+                    <div class="shadowMask"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script type="text/javascript">
+    var ezselect = new EasySelect({
+        trigger: '#ezselect'
+    });
+</script>
+</body>
+</html>

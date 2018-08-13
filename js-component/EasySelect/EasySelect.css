@@ -1,0 +1,163 @@
+@charset "utf-8";
+
+/*
+    reset
+ */
+html {
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    background: white;
+    min-height: 100px;
+}
+
+body {
+    min-width: 320px;
+    max-width: 1920px;
+    line-height: 1.6;
+    margin: auto;
+}
+
+.container {
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 400px;
+    text-align: center;
+}
+
+.fixWidth {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.label {
+    width: 100%;
+    max-width: 640px;
+    box-sizing: border-box;
+    text-align: left;
+    line-height: 45px;
+    padding: 15px;
+}
+
+.label h3 {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.fixWidth .demo div {
+    border: 1px solid #999;
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 40px;
+}
+
+
+/*
+    EasySelect style
+ */
+.EasySelect {
+    position: relative;
+    z-index: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, z-index 0.4s;
+    -webkit-transition: opacity 0.4s, z-index 0.4s;
+}
+
+.EasySelect * {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.EasySelect .greyLayer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #eee;
+    z-index: 888;
+    display: block;
+}
+
+ .EasySelect .content{
+     position: fixed;
+     display: block;
+     width: 100%;
+     height: 0px;
+     z-index: 889;
+     color: black;
+     -webkit-transition: all 0.4s;
+     transition: all 0.4s;
+     left: 0;
+     bottom: 0;
+     background-color: white;
+ }
+
+ .EasySelect .content .fixWidth {
+     position: relative;
+     width: 90%;
+     margin: 0 auto;
+ }
+
+ .EasySelect .content .btnBar {
+     border-bottom: 1px solid #ddd;
+     font-size: 15px;
+     height: 45px;
+     text-align: center;
+     line-height: 45px;
+ }
+
+.EasySelect .content .btnBar .cancel,
+.EasySelect .content .btnBar .ensure {
+    position: absolute;
+    height: 45px;
+    width: 55px;
+    cursor: pointer;
+    top: 0;
+}
+
+.EasySelect .content .btnBar .cancel {
+    left: 0;
+    color: #666;
+}
+
+.EasySelect .content .btnBar .ensure {
+    right: 0px;
+    color: #1e83d3;
+}
+
+.EasySelect .content .btnBar .title {
+    font-size: 15px;
+    padding: 0 15%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.EasySelect-show {
+    opacity: 1;
+    z-index: 1000;
+    visibility: visible;
+}
+
+.EasySelect-show .greyLayer {
+    opacity: 0.5;
+}
+
+.EasySelect-show .content {
+    height: 30%;
+}
