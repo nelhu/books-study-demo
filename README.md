@@ -6,16 +6,16 @@
 ## 提示条 Tooltip
 
 - 鼠标悬浮显示更多信息的提示框
- <img width="400px"  height="300px" src="js-component/images/tooltip.gif">
+ <img width="400px"  height="500px" src="js-component/images/tooltip.gif">
 
 
 ## 弹出框
 
 - 点击标题就能展开和折叠更多信息内容面板
- <img width="400px"  height="300px" src="js-component/images/popover.gif">
+ <img width="400px"  height="500px" src="js-component/images/popover.gif">
 
 ## 用法
 
 - 点击标题就能触发底部的弹出层，提供单选和多选功能
 
- <img width="400px"  height="300px"  src="js-component/images/easySelect.gif">
+ <img width="400px"  height="500px"  src="js-component/images/easySelect.gif">
