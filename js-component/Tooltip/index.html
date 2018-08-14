@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <style type="text/css">
+        html {
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 80%;
+            min-height: 600px;
+            margin: auto;
+            padding: 15px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            background: #eee;
+        }
+
+        .inner {
+            position: relative;
+            width: 90%;
+            margin: auto;
+        }
+
+        .tooltip {
+            border: 1px solid #999;
+            border-radius: 5px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        .tooltip span[data-tooltip] {
+            position: relative;
+            border: 1px solid #ddd;
+        }
+
+        .tooltip span:hover:before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 5px;
+            border-color: #000 transparent transparent;
+            left: 50%;
+            top: 0;
+        }
+
+        .tooltip span:hover:after {
+            display: block;
+            position: absolute;
+            content: attr(data-tooltip);
+            background-color: #000;
+            color: #fff;
+            width: 200px;
+            min-height: 25px;
+            line-height: 25px;
+            border-radius: 5px;
+            top: calc(-100% - 3px);
+            left: calc(50% - 100px);
+        }
+
+    </style>
+    <title>Tooltip demo</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="inner">
+            <p class="tooltip"><span data-tooltip="content">Tooltip</span></p>
+        </div>
+    </div>
+
+
+</body>
+</html>
