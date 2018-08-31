@@ -13,3 +13,12 @@ function aaaaa2() {
     console.log('outer');
 }
 aaaaa2();
+
+
+
+
+
+var d1 = new Date
+
+
+
