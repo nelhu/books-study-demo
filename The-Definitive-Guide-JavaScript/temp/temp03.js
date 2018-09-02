@@ -13,7 +13,7 @@ function practice(times) {
         }
 
     }
-
+  
     return count / times;
 }
 
@@ -50,5 +50,6 @@ function reelet(times) {
 }
 
 reelet(1000);
-
+var a = 'debug';
+reelet
 

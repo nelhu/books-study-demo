@@ -34,6 +34,7 @@
         return 1;
     }
 
-    version_compare('1.2.3', '1.2.4');
+
+version_compare('1.2.3', '1.2.4');
     version_compare2('1.2.3', '1.2.3.a');
 })()
