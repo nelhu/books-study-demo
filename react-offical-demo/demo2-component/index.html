@@ -1,0 +1,53 @@
+<!doctype>
+<html>
+    <head>
+        <title>demo2 component</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <script src="https://lib.baomitu.com/react/16.4.2/umd/react.development.js"></script>
+        <script src="https://lib.baomitu.com/react-dom/16.4.2/umd/react-dom.development.js"></script>
+        <script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+
+    </head>
+    <body>
+        <div id="root"></div>
+
+
+
+        <script type="text/babel">
+
+            class Clock extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = {
+                        date: new Date(),
+                    };
+                }
+
+                render() {
+                    return  (<h3>{this.state.date.toTimeString()}</h3>);
+                }
+
+                componentDidMount() {
+                    this.timer = setInterval(
+                        () => this.trick(),
+                        1000
+                    );
+                }
+
+                componentWillUnmount() {
+                    clearInterval(this.timer);
+                }
+
+                trick() {
+                    this.setState({
+                        date: new Date(),
+                    });
+                }
+            }
+
+            ReactDOM.render(<Clock />, document.getElementById('root'));
+
+        </script>
+    </body>
+</html>

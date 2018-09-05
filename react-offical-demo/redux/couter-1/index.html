@@ -1,0 +1,59 @@
+<!doctype>
+<html>
+    <head>
+        <title>redux couter1</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <script src="https://lib.baomitu.com/redux/4.0.0/redux.js"></script>
+
+
+
+    </head>
+    <body>
+
+
+        <div>
+            clicked <span id="value"></span> times
+            <button id="increment" onclick="increment()">+</button>
+            <button id="decrement" onclick="decrement()">-</button>
+        </div>
+
+        <script type="text/javascript">
+        
+            function reducer(state, action) {
+                if (typeof state === 'undefined') {
+                    return 0;
+                }
+
+                switch (action.type) {
+                    case 'increment':
+                        return state + 1;
+                    case 'decrement':
+                        return state - 1; 
+                    default:
+                        return state;
+                }
+            }
+        
+            var store = Redux.createStore(reducer);
+
+            function increment() {
+                store.dispatch({type: 'increment'});
+            }
+
+            function decrement() {
+                store.dispatch({type: 'decrement'});
+            }
+            
+            function render() {
+                document.getElementById('value').innerHTML = store.getState().toString();
+            }
+
+            render();
+
+            store.subscribe(render);
+
+
+        </script>
+    </body>
+</html>

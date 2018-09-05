@@ -1,0 +1,61 @@
+<!doctype>
+<html>
+    <head>
+        <title>demo3 refs</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <script src="https://lib.baomitu.com/react/16.4.2/umd/react.development.js"></script>
+        <script src="https://lib.baomitu.com/react-dom/16.4.2/umd/react-dom.development.js"></script>
+        <script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+
+    </head>
+    <body>
+        <div id="root"></div>
+
+
+
+        <script type="text/babel">
+
+            // class MyComponent extends React.Component {
+            //     constructor(props) {
+            //         super(props);
+            //         this.myRef = React.createRef();
+            //     }
+            //     render() {
+            //         return <div ref={this.myRef} />;
+            //     }
+            // }
+
+            class NameForm extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.handleSubmit = this.handleSubmit.bind(this);
+                }
+
+                handleSubmit(event) {
+                    alert('A name was submitted fro my: ' + this.fileInput.value);
+                    console.log(this.fileInput.files[0].name);
+                    event.preventDefault();
+                }
+
+                render() {
+                    return (
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                        Name:
+                        <input type="file" ref={(fileInput) => this.fileInput = fileInput} />
+                        </label>
+                        {/*this is comment*/}
+                        <input type="submit" value="Submit" />
+                    </form>
+                    );
+                }
+
+            }
+
+
+            ReactDOM.render(<NameForm />, document.getElementById('root'));
+
+        </script>
+    </body>
+</html>

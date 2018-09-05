@@ -1,0 +1,65 @@
+<!doctype>
+<html>
+    <head>
+        <title>demo1</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <script src="https://lib.baomitu.com/react/16.4.2/umd/react.development.js"></script>
+        <script src="https://lib.baomitu.com/react-dom/16.4.2/umd/react-dom.development.js"></script>
+        <script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+
+    </head>
+    <body>
+        <div id="root"></div>
+        <div id="root2"></div>
+        <div id="root3"></div>
+
+
+
+        <script type="text/babel">
+        
+        const obj = {
+            name: 'nelhu',
+            age: '23',
+        };
+
+        const element = <h1 title="title_text">Hello, {obj.name}!</h1>;
+        const element2 = React.createElement('button', {className: 'foo'}, 'element2');
+        const element3 = (
+            <div>
+                <h1>hi, {obj.name}</h1>
+                <h2>your name is {obj.age}</h2>
+            </div>
+        );
+
+        ReactDOM.render(
+            element2, 
+            document.getElementById('root')
+        ); 
+
+        // 函数组件
+        function Component1(props) {
+            return <a href="#">{props.url}</a>;
+        }
+
+        ReactDOM.render(
+            <Component1 url="click me" />,
+            document.getElementById('root2')
+        );
+        
+
+        function interval() {
+            setInterval(function() {
+                ReactDOM.render(
+                    <h3>{new Date().toLocaleTimeString()}</h3>,
+                    document.getElementById('root3')
+                );
+            }, 1000);
+        }
+
+        interval();
+
+
+        </script>
+    </body>
+</html>
