@@ -19,3 +19,7 @@
 - 点击标题就能触发底部的弹出层，提供单选和多选功能
 
  <img width="400px"  height="500px"  src="js-component/images/easySelect.gif">
+
+ ## 使用translate替代overflow：scroll
+ 
+  
