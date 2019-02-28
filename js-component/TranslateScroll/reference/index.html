@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no"/>
+    <script>
+        document.addEventListener("touchstart",function(e){
+          console.log(e);
+            e.preventDefault();//阻止默认事件
+        })
+
+        // document.addEventListener('touchstart', function (e) {
+        //   for (var i = 0; i < e.touches.length; i++) {
+        //     console.log(e.changedTouches[i].target.innerText);
+        //   }
+        // }, false);
+
+    </script>
+    <title>translate scroll</title>
+    <style>
+        body{margin:0;}
+        html,body{height:100%; overflow:hidden; position:relative;}
+        ul,li{margin:0; padding:0;}
+        li{list-style:none;}
+        header{
+            height:40px;
+            font-size:20px;
+            color:#fff;
+            background:#000;
+            line-height:40px;
+            text-align:center;
+        }
+        #wrap{
+            position:absolute;
+            top:40px;
+            left:0;
+            right:0;
+            bottom:40px;
+            overflow:hidden;
+        }
+        #list li{
+            line-height:30px;
+            text-indent:20px;
+            font-size:16px;
+            border-bottom:1px solid #000;
+        }
+    </style>
+</head>
+<script type="text/javascript" src="tween.js"></script>
+<body>
+<header id="header">translate scroll</header>
+<section id="wrap">
+    <ul id="list"></ul>
+</section>
+</body>
+<script>
+    //生成列表内容
+    function createList(){
+        var list = document.querySelector('#list');
+        var inner = "";
+        for(var i=0; i<200; i++){
+            inner+=`<li>这是第${i}个li</li>`
+        }
+        list.innerHTML = inner;
+    }
+
+    window.onload = function() {
+      createList();
+
+      var list = document.querySelector('#list');
+      var wrap = document.querySelector('#wrap');
+
+      var scrollBar = document.createElement('div');
+      
+      var maxTranslate = 0;
+      var startPoint = 0;
+      var startEl = 0;
+      var lastY = 0;
+      var lastTime = 0;
+      var lastTimeDis = 0;
+      var lastDis = 0;
+
+      var scale = wrap.offsetHeight / list.offsetHeight;
+
+      scrollBar.style.cssText = 'width: 6px; background: rgba(0,0,0,0.5);position: absolute;right: 0; top:0; opacity: 0; transition: opacity 1s;border-radius: 3px;';
+      scrollBar.style.height = wrap.clientHeight * scale + 'px';
+      wrap.appendChild(scrollBar);
+
+      list.style.minHeight = '100%';
+
+      maxTranslate = wrap.offsetHeight - list.offsetHeight;
+      
+      css(list,"translateZ",0.01);//开启3d硬件加速
+
+      list.addEventListener('touchstart', function(e) {
+        // clearInterval(list.timer);
+        startPoint = e.changedTouches[0].pageY;
+        startEl = css(list, "translateY");
+        lastY = startEl;
+        lastTime = new Date().getTime();
+        lastTimeDis = lastDis = 0;
+
+
+        scrollBar.style.opacity = 1;
+        this;
+      });
+
+      list.addEventListener('touchmove', function(e) {
+        var nowPoint = e.changedTouches[0].pageY;
+        var nowTime = new Date().getTime();
+        var dis = nowPoint - startPoint;
+        var translateY = startEl + dis;
+        css(list, "translateY", translateY);
+        css(scrollBar, 'translateY', -translateY*scale);
+
+        // 为缓冲做准备
+        lastDis = translateY - lastY;
+        lastTimeDis = nowTime - lastTime;
+        nowTime = lastTime;
+        lastY = translateY;
+      });
+
+      list.addEventListener('touchend', function(e) {
+        var type = 'easeOut';
+        var speed = Math.round(lastDis / lastTimeDis*10);
+        speed = lastTimeDis<=0?0:speed;//如果速度很小的话，就不用在做缓冲运动了
+        var target = Math.round(speed*30+css(list,"translateY"));//(求缓冲的最终位置
+        if(target>0){
+                target = 0;
+            type = "backOut";
+        }else if(target<maxTranslate){
+            target = maxTranslate;
+            type = "backOut";
+        }//添加想要的运动形式，就要用到我们的MTween封装函数
+
+        
+        MTween({
+                el:list,
+                target:{translateY:target},
+                time:Math.round(Math.abs(target - css(list,"translateY"))*2),
+                type:type,
+                callBack:function(){//添加回调函数，当缓冲动画执行完之后，让滚动条消失
+                    scrollBar.style.opacity = 0;
+                },
+                callIn:function(){
+                    var translateY = css(list,"translateY");
+                    css(scrollBar,"translateY",-translateY*scale);//添加同步函数，缓冲运动的时候，让滚动条滚动的距离也随着变化
+                }
+            });
+
+
+      });
+
+    }
+    
+    
+</script>
+</html>
